@@ -1,0 +1,35 @@
+{
+  "name": "brightedge-code-assignment",
+  "version": "1.0.0",
+  "description": "code assignment",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --content-base src --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawnLOATRchen/BEdge-Code-Assign.git"
+  },
+  "author": "yuxiang chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shawnLOATRchen/BEdge-Code-Assign/issues"
+  },
+  "homepage": "https://github.com/shawnLOATRchen/BEdge-Code-Assign#readme",
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.3",
+    "node-sass": "^4.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
