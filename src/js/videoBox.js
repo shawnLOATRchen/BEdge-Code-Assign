@@ -17,7 +17,7 @@ export default class VideoBox extends Component{
 
     return(
       <div className="video-box" id={this.props.id}>
-        <div className="card">
+        <div className="card video-card">
           <img className="card-img-top" src={snippet.thumbnails.high.url} alt="Card image cap" />
           <div className="card-block">
             <div className="information-box">
