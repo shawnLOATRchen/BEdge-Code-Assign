@@ -7,16 +7,16 @@ import '../sass/index.sass'
 import Header from './header'
 import Home from './home'
 import Bookmark from './bookmark'
-
+import Player from './player'
 
 class App extends Component{
   constructor(){
     super();
-    this.state = { home:true, videos: [], bookmark:[] }
+    this.state = { home:true, videos: [], bookmark:[], playerId: null }
   }
   render(){
     return(
-      <div>
+      <main>
         <Header changeTab={this.changeTab.bind(this)}/>
         {
           this.state.home ?
@@ -25,14 +25,17 @@ class App extends Component{
             bookmark={this.state.bookmark}
             searchVideo={this.searchVideo.bind(this)}
             toggleBookmark={this.toggleBookmark.bind(this)}
+            togglePlayer={this.togglePlayer.bind(this)}
           />
           :
           <Bookmark
             bookmark={this.state.bookmark}
             toggleBookmark={this.toggleBookmark.bind(this)}
+            togglePlayer={this.togglePlayer.bind(this)}
           />
         }
-      </div>
+        {this.state.playerId && <Player playerId={this.state.playerId} togglePlayer={this.togglePlayer.bind(this)}/>}
+      </main>
     )
   }
   changeTab(isHome){
@@ -48,6 +51,9 @@ class App extends Component{
     if (index >= 0) bookmark.splice(index, 1)
     else bookmark.push(video);
     this.setState({ bookmark:bookmark })
+  }
+  togglePlayer(playerId){
+    this.setState({ playerId : playerId });
   }
   componentDidMount(){
     window.sr = ScrollReveal();

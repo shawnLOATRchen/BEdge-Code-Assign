@@ -25,7 +25,7 @@ export default class VideoBox extends Component{
               <p className="card-text">{snippet.description}</p>
             </div>
             <span className={"btn btn-"+ (props.bookmark ? 'warning':'primary')} onClick={this.handleBookmark.bind(this)} >{props.bookmark ? 'UnBoomark':'Bookmark'}</span>
-            <a href={`https://www.youtube.com/watch?v=${props.video.id.videoId}`} className="btn btn-success">Watch Video</a>
+            <span className="btn btn-success" onClick={this.handleWatch.bind(this)} >Watch Video</span>
           </div>
         </div>
         {this.state.popUnbookmark &&
@@ -48,6 +48,10 @@ export default class VideoBox extends Component{
     } else {
       this.props.toggleBookmark(this.props.video);
     }
+  }
+
+  handleWatch(){
+    this.props.togglePlayer(this.props.video.id.videoId);
   }
 
   unboomkark(){

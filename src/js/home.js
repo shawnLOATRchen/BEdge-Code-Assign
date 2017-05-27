@@ -17,6 +17,7 @@ export default class Home extends Component{
               video={video}
               bookmark={this.props.bookmark.map(obj => obj.id.videoId).includes(video.id.videoId)}
               toggleBookmark={this.props.toggleBookmark}
+              togglePlayer={this.props.togglePlayer}
             />
           )}
         </div>

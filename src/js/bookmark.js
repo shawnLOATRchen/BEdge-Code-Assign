@@ -21,6 +21,7 @@ export default class Bookmark extends Component{
                 video={video}
                 bookmark={true}
                 toggleBookmark={this.props.toggleBookmark}
+                togglePlayer={this.props.togglePlayer}
               />
             )
           })}

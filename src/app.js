@@ -8084,8 +8084,8 @@ var VideoBox = function (_Component) {
               props.bookmark ? 'UnBoomark' : 'Bookmark'
             ),
             _react2.default.createElement(
-              "a",
-              { href: "https://www.youtube.com/watch?v=" + props.video.id.videoId, className: "btn btn-success" },
+              "span",
+              { className: "btn btn-success", onClick: this.handleWatch.bind(this) },
               "Watch Video"
             )
           )
@@ -8127,6 +8127,11 @@ var VideoBox = function (_Component) {
       } else {
         this.props.toggleBookmark(this.props.video);
       }
+    }
+  }, {
+    key: "handleWatch",
+    value: function handleWatch() {
+      this.props.togglePlayer(this.props.video.id.videoId);
     }
   }, {
     key: "unboomkark",
@@ -11854,7 +11859,8 @@ var Bookmark = function (_Component) {
               id: 'bookmark' + video.id.videoId,
               video: video,
               bookmark: true,
-              toggleBookmark: _this2.props.toggleBookmark
+              toggleBookmark: _this2.props.toggleBookmark,
+              togglePlayer: _this2.props.togglePlayer
             });
           })
         )
@@ -12042,7 +12048,8 @@ var Home = function (_Component) {
               bookmark: _this2.props.bookmark.map(function (obj) {
                 return obj.id.videoId;
               }).includes(video.id.videoId),
-              toggleBookmark: _this2.props.toggleBookmark
+              toggleBookmark: _this2.props.toggleBookmark,
+              togglePlayer: _this2.props.togglePlayer
             });
           })
         )
@@ -13041,6 +13048,10 @@ var _bookmark = __webpack_require__(102);
 
 var _bookmark2 = _interopRequireDefault(_bookmark);
 
+var _player = __webpack_require__(262);
+
+var _player2 = _interopRequireDefault(_player);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13057,7 +13068,7 @@ var App = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-    _this.state = { home: true, videos: [], bookmark: [] };
+    _this.state = { home: true, videos: [], bookmark: [], playerId: null };
     return _this;
   }
 
@@ -13065,18 +13076,21 @@ var App = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        'main',
         null,
         _react2.default.createElement(_header2.default, { changeTab: this.changeTab.bind(this) }),
         this.state.home ? _react2.default.createElement(_home2.default, {
           videos: this.state.videos,
           bookmark: this.state.bookmark,
           searchVideo: this.searchVideo.bind(this),
-          toggleBookmark: this.toggleBookmark.bind(this)
+          toggleBookmark: this.toggleBookmark.bind(this),
+          togglePlayer: this.togglePlayer.bind(this)
         }) : _react2.default.createElement(_bookmark2.default, {
           bookmark: this.state.bookmark,
-          toggleBookmark: this.toggleBookmark.bind(this)
-        })
+          toggleBookmark: this.toggleBookmark.bind(this),
+          togglePlayer: this.togglePlayer.bind(this)
+        }),
+        this.state.playerId && _react2.default.createElement(_player2.default, { playerId: this.state.playerId, togglePlayer: this.togglePlayer.bind(this) })
       );
     }
   }, {
@@ -13099,6 +13113,11 @@ var App = function (_Component) {
       var index = ids.indexOf(video.id.videoId);
       if (index >= 0) bookmark.splice(index, 1);else bookmark.push(video);
       this.setState({ bookmark: bookmark });
+    }
+  }, {
+    key: 'togglePlayer',
+    value: function togglePlayer(playerId) {
+      this.setState({ playerId: playerId });
     }
   }, {
     key: 'componentDidMount',
@@ -15144,7 +15163,7 @@ exports = module.exports = __webpack_require__(131)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  background-color: #fafafa; }\n\nnav {\n  background-color: #ffffff;\n  border-bottom: 1px solid lightgrey; }\n  nav .navbar-brand {\n    cursor: pointer; }\n    nav .navbar-brand img {\n      height: 30px; }\n  nav .nav-link {\n    cursor: pointer;\n    position: relative; }\n  nav .active-tab {\n    color: lightgrey; }\n    nav .active-tab:after {\n      position: absolute;\n      right: 6px;\n      bottom: -8px;\n      left: 6px;\n      height: 3px;\n      width: auto;\n      content: \" \";\n      background-color: #e62117; }\n      @media screen and (max-width: 991px) {\n        nav .active-tab:after {\n          top: 6px;\n          right: auto;\n          bottom: 6px;\n          left: -10px;\n          height: auto;\n          width: 3px; } }\n\n#searchBox, #nobookmark {\n  margin: 20px auto; }\n\n.video-box {\n  width: 320px;\n  margin: 15px;\n  position: relative; }\n  @media screen and (max-width: 360px) {\n    .video-box {\n      margin: 20px 0; } }\n  .video-box .card .card-img-top {\n    height: 240px; }\n  .video-box .card .card-title {\n    height: 60px;\n    line-height: 30px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .card-text {\n    height: 100px;\n    line-height: 25px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .information-box {\n    overflow: hidden; }\n  .video-box .card .btn {\n    display: block;\n    cursor: pointer;\n    margin-top: 10px; }\n  .video-box .unbookmark-box {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background-color: rgba(0, 0, 0, 0.35); }\n    .video-box .unbookmark-box .pop-remove-video {\n      position: absolute;\n      width: 250px;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%); }\n    .video-box .unbookmark-box .buttons {\n      padding-bottom: 10px; }\n", ""]);
+exports.push([module.i, "main {\n  background-color: #fafafa; }\n\nnav {\n  background-color: #ffffff;\n  border-bottom: 1px solid lightgrey; }\n  nav .navbar-brand {\n    cursor: pointer; }\n    nav .navbar-brand img {\n      height: 30px; }\n  nav .nav-link {\n    cursor: pointer;\n    position: relative; }\n  nav .active-tab {\n    color: lightgrey; }\n    nav .active-tab:after {\n      position: absolute;\n      right: 6px;\n      bottom: -8px;\n      left: 6px;\n      height: 3px;\n      width: auto;\n      content: \" \";\n      background-color: #e62117; }\n      @media screen and (max-width: 991px) {\n        nav .active-tab:after {\n          top: 6px;\n          right: auto;\n          bottom: 6px;\n          left: -10px;\n          height: auto;\n          width: 3px; } }\n\n#searchBox, #nobookmark {\n  margin: 20px auto; }\n\n.video-box {\n  width: 320px;\n  margin: 15px;\n  position: relative; }\n  @media screen and (max-width: 360px) {\n    .video-box {\n      margin: 20px 0; } }\n  .video-box .card .card-img-top {\n    height: 240px; }\n  .video-box .card .card-title {\n    height: 60px;\n    line-height: 30px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .card-text {\n    height: 100px;\n    line-height: 25px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .information-box {\n    overflow: hidden; }\n  .video-box .card .btn {\n    display: block;\n    cursor: pointer;\n    margin-top: 10px; }\n  .video-box .unbookmark-box {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background-color: rgba(0, 0, 0, 0.35); }\n    .video-box .unbookmark-box .pop-remove-video {\n      position: absolute;\n      width: 250px;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%); }\n    .video-box .unbookmark-box .buttons {\n      padding-bottom: 10px; }\n\n.playerBox {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.85); }\n  .playerBox .close {\n    color: white;\n    position: absolute;\n    top: 10px;\n    right: 20px; }\n  .playerBox .player-container {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%); }\n    @media screen and (max-width: 576px) {\n      .playerBox .player-container {\n        width: 100%;\n        padding: 0; } }\n  .playerBox .player {\n    position: relative;\n    height: 0px;\n    padding-bottom: 56.25%;\n    overflow: hidden; }\n    .playerBox .player iframe {\n      position: absolute;\n      top: 0;\n      left: 0;\n      bottom: 0;\n      right: 0;\n      width: 100%;\n      height: 100%; }\n", ""]);
 
 // exports
 
@@ -30099,6 +30118,73 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Player = function (_Component) {
+  _inherits(Player, _Component);
+
+  function Player() {
+    _classCallCheck(this, Player);
+
+    return _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).apply(this, arguments));
+  }
+
+  _createClass(Player, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        "div",
+        { className: "playerBox" },
+        _react2.default.createElement(
+          "span",
+          { className: "close", onClick: function onClick() {
+              return _this2.props.togglePlayer();
+            } },
+          "\xD7"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "player-container container" },
+          _react2.default.createElement(
+            "div",
+            { className: "player" },
+            _react2.default.createElement("iframe", { src: "https://www.youtube.com/embed/" + this.props.playerId, frameBorder: "0", allowFullScreen: true })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Player;
+}(_react.Component);
+
+exports.default = Player;
 
 /***/ })
 /******/ ]);
