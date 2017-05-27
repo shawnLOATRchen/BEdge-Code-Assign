@@ -14,7 +14,6 @@ class App extends Component{
     super();
     this.state = { home:true, videos: [], bookmark:[] }
   }
-
   render(){
     return(
       <div>
@@ -40,7 +39,6 @@ class App extends Component{
     this.setState({home: isHome});
   }
   searchVideo(items){
-    console.log(items);
     this.setState({videos: items});
   }
   toggleBookmark(video){
@@ -51,7 +49,19 @@ class App extends Component{
     else bookmark.push(video);
     this.setState({ bookmark:bookmark })
   }
-
+  componentDidMount(){
+    window.sr = ScrollReveal();
+    sr.reveal('#searchBox',{
+      duration: 1000,
+      distance: '30px'
+    });
+    sr.reveal('nav',{
+      duration: 1000,
+      distance: '30px',
+      origin: 'top'
+    });
+    $('.main-box').fadeOut(0).fadeIn(1000);
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -13087,7 +13087,6 @@ var App = function (_Component) {
   }, {
     key: 'searchVideo',
     value: function searchVideo(items) {
-      console.log(items);
       this.setState({ videos: items });
     }
   }, {
@@ -13100,6 +13099,21 @@ var App = function (_Component) {
       var index = ids.indexOf(video.id.videoId);
       if (index >= 0) bookmark.splice(index, 1);else bookmark.push(video);
       this.setState({ bookmark: bookmark });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.sr = ScrollReveal();
+      sr.reveal('#searchBox', {
+        duration: 1000,
+        distance: '30px'
+      });
+      sr.reveal('nav', {
+        duration: 1000,
+        distance: '30px',
+        origin: 'top'
+      });
+      $('.main-box').fadeOut(0).fadeIn(1000);
     }
   }]);
 
