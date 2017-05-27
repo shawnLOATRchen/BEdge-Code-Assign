@@ -9,13 +9,15 @@ export default class Bookmark extends Component{
         You don{"'"}t have bookmark video
       </div>
     );
+
     return(
       <div>
-        <div className="d-flex flex-wrap justify-content-center">
+        <div className="main-box d-flex flex-wrap justify-content-center">
           {this.props.bookmark.map((video, index) => {
             return(
               <VideoBox
                 key={index}
+                id={'bookmark'+video.id.videoId}
                 video={video}
                 bookmark={true}
                 toggleBookmark={this.props.toggleBookmark}

@@ -9,10 +9,11 @@ export default class Home extends Component{
     return(
       <div>
         <Search videos={this.props.videos} searchVideo={this.props.searchVideo}/>
-        <div className="d-flex flex-wrap justify-content-center">
+        <div className="main-box d-flex flex-wrap justify-content-center">
           {this.props.videos.map((video, index) =>
             <VideoBox
               key={index}
+              id={'home'+video.id.videoId}
               video={video}
               bookmark={this.props.bookmark.map(obj => obj.id.videoId).includes(video.id.videoId)}
               toggleBookmark={this.props.toggleBookmark}

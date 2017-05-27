@@ -5,6 +5,7 @@ nav
   background-color: #ffffff
   border-bottom: 1px solid lightgrey
   .navbar-brand
+    cursor: pointer
     img
       height: 30px
   .nav-link
@@ -36,6 +37,7 @@ nav
 .video-box
   width: 320px
   margin: 15px
+  position: relative
   @media screen and (max-width: 360px)
     margin: 20px 0
   .card
@@ -57,3 +59,18 @@ nav
       display: block
       cursor: pointer
       margin-top: 10px
+  .unbookmark-box
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background-color: rgba(0, 0, 0, 0.35)
+    .pop-remove-video
+      position: absolute
+      width: 250px
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+    .buttons
+      padding-bottom: 10px

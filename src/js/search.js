@@ -30,6 +30,7 @@ export default class Search extends Component{
 
   handleSearch(){
     this.search(this.refs.searchText.value);
+    $('.main-box').fadeOut(0).fadeIn(1000);
   }
 
   search(searchText){
