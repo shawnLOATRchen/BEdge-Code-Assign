@@ -11,3 +11,5 @@ Use SASS instead of CSS to styling
 The project is already build
 
 You can double click `index.html` and review in the browser
+
+Or see the live [demo](https://shawnloatrchen.github.io/BEdge-Code-Assign/)
