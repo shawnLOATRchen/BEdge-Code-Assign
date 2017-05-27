@@ -6,8 +6,8 @@ Build tool use by webpack
 
 Use Bootstrap to create responsive component
 
-use SASS instead of CSS to styling
+Use SASS instead of CSS to styling
 
 The project is already build
 
-you can double click `index.html` and open in the browser
+You can double click `index.html` and review in the browser
