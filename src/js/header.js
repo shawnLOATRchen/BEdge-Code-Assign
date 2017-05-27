@@ -8,14 +8,16 @@ export default class Header extends Component{
         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand" href="#">Youtube</a>
+        <a className="navbar-brand" href="#">
+          <img src="./src/img/YouTube-logo.png"/>
+        </a>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <span className="nav-link" onClick={() => this.handleTab(true)}>Home <span className="sr-only">(current)</span></span>
+              <span className="nav-link active-tab" id="header-home" onClick={() => this.handleTab(true)}>Home <span className="sr-only">(current)</span></span>
             </li>
             <li className="nav-item">
-              <span className="nav-link" onClick={() => this.handleTab(false)}>Bookmarked</span>
+              <span className="nav-link" id="header-bookmark" onClick={() => this.handleTab(false)}>Bookmarked</span>
             </li>
           </ul>
         </div>

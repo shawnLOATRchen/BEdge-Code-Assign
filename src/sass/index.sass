@@ -4,8 +4,30 @@ body
 nav
   background-color: #ffffff
   border-bottom: 1px solid lightgrey
+  .navbar-brand
+    img
+      height: 30px
   .nav-link
     cursor: pointer
+    position: relative
+  .active-tab
+    color: lightgrey
+    &:after
+      position: absolute
+      right: 6px
+      bottom: -8px
+      left: 6px
+      height: 3px
+      width: auto
+      content: " "
+      background-color: #e62117
+      @media screen and (max-width: 991px)
+        top: 6px
+        right: auto
+        bottom: 6px
+        left: -10px
+        height: auto
+        width: 3px
 
 #searchBox, #nobookmark
   margin: 20px auto

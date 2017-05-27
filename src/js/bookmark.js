@@ -26,4 +26,11 @@ export default class Bookmark extends Component{
       </div>
     )
   }
+
+  componentWillMount(){
+    $('#header-bookmark').addClass('active-tab');
+  }
+  componentWillUnmount(){
+    $('#header-bookmark').removeClass('active-tab');
+  }
 }

@@ -11779,6 +11779,16 @@ var Bookmark = function (_Component) {
         )
       );
     }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      $('#header-bookmark').addClass('active-tab');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      $('#header-bookmark').removeClass('active-tab');
+    }
   }]);
 
   return Bookmark;
@@ -11836,7 +11846,7 @@ var Header = function (_Component) {
         _react2.default.createElement(
           "a",
           { className: "navbar-brand", href: "#" },
-          "Youtube"
+          _react2.default.createElement("img", { src: "./src/img/YouTube-logo.png" })
         ),
         _react2.default.createElement(
           "div",
@@ -11849,7 +11859,7 @@ var Header = function (_Component) {
               { className: "nav-item" },
               _react2.default.createElement(
                 "span",
-                { className: "nav-link", onClick: function onClick() {
+                { className: "nav-link active-tab", id: "header-home", onClick: function onClick() {
                     return _this2.handleTab(true);
                   } },
                 "Home ",
@@ -11865,7 +11875,7 @@ var Header = function (_Component) {
               { className: "nav-item" },
               _react2.default.createElement(
                 "span",
-                { className: "nav-link", onClick: function onClick() {
+                { className: "nav-link", id: "header-bookmark", onClick: function onClick() {
                     return _this2.handleTab(false);
                   } },
                 "Bookmarked"
@@ -11953,6 +11963,16 @@ var Home = function (_Component) {
           })
         )
       );
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      $('#header-home').addClass('active-tab');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      $('#header-home').removeClass('active-tab');
     }
   }]);
 
@@ -15056,7 +15076,7 @@ exports = module.exports = __webpack_require__(131)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  background-color: #fafafa; }\n\nnav {\n  background-color: #ffffff;\n  border-bottom: 1px solid lightgrey; }\n  nav .nav-link {\n    cursor: pointer; }\n\n#searchBox, #nobookmark {\n  margin: 20px auto; }\n\n.video-box {\n  width: 320px;\n  margin: 15px; }\n  @media screen and (max-width: 360px) {\n    .video-box {\n      margin: 20px 0; } }\n  .video-box .card .card-img-top {\n    height: 240px; }\n  .video-box .card .card-title {\n    height: 60px;\n    line-height: 30px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .card-text {\n    height: 100px;\n    line-height: 25px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .information-box {\n    overflow: hidden; }\n  .video-box .card .btn {\n    display: block;\n    cursor: pointer;\n    margin-top: 10px; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #fafafa; }\n\nnav {\n  background-color: #ffffff;\n  border-bottom: 1px solid lightgrey; }\n  nav .navbar-brand img {\n    height: 30px; }\n  nav .nav-link {\n    cursor: pointer;\n    position: relative; }\n  nav .active-tab {\n    color: lightgrey; }\n    nav .active-tab:after {\n      position: absolute;\n      right: 6px;\n      bottom: -8px;\n      left: 6px;\n      height: 3px;\n      width: auto;\n      content: \" \";\n      background-color: #e62117; }\n      @media screen and (max-width: 991px) {\n        nav .active-tab:after {\n          top: 6px;\n          right: auto;\n          bottom: 6px;\n          left: -10px;\n          height: auto;\n          width: 3px; } }\n\n#searchBox, #nobookmark {\n  margin: 20px auto; }\n\n.video-box {\n  width: 320px;\n  margin: 15px; }\n  @media screen and (max-width: 360px) {\n    .video-box {\n      margin: 20px 0; } }\n  .video-box .card .card-img-top {\n    height: 240px; }\n  .video-box .card .card-title {\n    height: 60px;\n    line-height: 30px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .card-text {\n    height: 100px;\n    line-height: 25px;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n  .video-box .card .information-box {\n    overflow: hidden; }\n  .video-box .card .btn {\n    display: block;\n    cursor: pointer;\n    margin-top: 10px; }\n", ""]);
 
 // exports
 

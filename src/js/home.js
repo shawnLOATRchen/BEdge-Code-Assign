@@ -22,4 +22,11 @@ export default class Home extends Component{
       </div>
     )
   }
+
+  componentWillMount(){
+    $('#header-home').addClass('active-tab');
+  }
+  componentWillUnmount(){
+    $('#header-home').removeClass('active-tab');
+  }
 }
